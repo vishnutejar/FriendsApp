@@ -8,17 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.friendsapp.databinding.FragFriendListBinding
 import com.example.friendsapp.databinding.FragFriendsDetailsBinding
 import com.example.friendsapp.viewmodels.FriendsViewModel
 
 class FriendsDetailsFrag : Fragment() {
     private lateinit var binding: FragFriendsDetailsBinding
-    lateinit var viewModel: FriendsViewModel
-    var email: String? = null
-    var fullName: String? = null
-    var address: String? = null
-    var phoneNumber: String? = null
+    private lateinit var viewModel: FriendsViewModel
+    private var email: String? = null
+    private var fullName: String? = null
+    private var address: String? = null
+    private var phoneNumber: String? = null
 
     companion object {
         fun newInstance() = FriendsDetailsFrag()
@@ -27,7 +26,7 @@ class FriendsDetailsFrag : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         getBundleArgValues()
         initSetContentView(inflater, container)
         initViewModel()
@@ -43,8 +42,8 @@ class FriendsDetailsFrag : Fragment() {
         binding.txtValueEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
             intent.putExtra(Intent.EXTRA_EMAIL, email)
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Hello My Friend its me, ${fullName}")
-            intent.putExtra(Intent.EXTRA_TEXT, "We are waiting from long time at following address ${address}")
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Hello My Friend its me, $fullName")
+            intent.putExtra(Intent.EXTRA_TEXT, "We are waiting from long time at following address $address")
             intent.type = "message/rfc822"
             startActivity(Intent.createChooser(intent, "Select email"))
         }

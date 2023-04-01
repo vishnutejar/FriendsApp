@@ -16,8 +16,8 @@ import com.example.friendsapp.viewmodels.FriendsViewModel
 
 class FriendListFrag : Fragment(), IOnItemClickFriendsRecyclerView {
     private lateinit var binding: FragFriendListBinding
-    lateinit var viewModel: FriendsViewModel
-    lateinit var friendsAdapter: FriendsAdapter
+    private lateinit var viewModel: FriendsViewModel
+    private lateinit var friendsAdapter: FriendsAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,10 +61,10 @@ class FriendListFrag : Fragment(), IOnItemClickFriendsRecyclerView {
         bundle.putString("phoneNumber",frdsData.phone)
         val frg = FriendsDetailsFrag.newInstance()
         frg.arguments=bundle
-        val frgtra = parentFragmentManager.beginTransaction()
-        frg.let { frgtra.replace(R.id.container, it) }
-        frgtra.addToBackStack(null)
-        frgtra.commit()
+        val fragrant = parentFragmentManager.beginTransaction()
+        frg.let { fragrant.replace(R.id.container, it) }
+        fragrant.addToBackStack(null)
+        fragrant.commit()
     }
 
 
